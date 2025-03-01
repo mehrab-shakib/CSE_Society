@@ -7,6 +7,6 @@ const router = express.Router();
 // Authentication Routes
 router.post("/register", register);
 router.post("/login", login);
-router.get("/profile", authMiddleware, getUserProfile);
+router.get("/profile",  authMiddleware.verifySuperadmin, getUserProfile);
 
 module.exports = router;
