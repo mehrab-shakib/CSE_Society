@@ -10,6 +10,9 @@ app.use(cors());
 app.use(express.json()); // Parse JSON data
 
 // Routes
+
+app.use("/api/auth", require("./routes/authRoutes"));
+
 app.get("/", (req, res) => {
   res.send("CSE Society Backend Running...");
 });
