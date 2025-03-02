@@ -1,5 +1,5 @@
 {
-  "name": "cse-society-frontend",
+  "name": "frontend",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,7 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@heroicons/react": "^2.2.0",
     "@tailwindcss/vite": "^4.0.9",
     "axios": "^1.8.1",
     "react": "^19.0.0",
