@@ -1,6 +1,6 @@
 const express = require("express");
 const { getAllAdmins, assignAdmin, removeAdmin } = require("../controllers/adminController");
-const { verifySuperadmin } = require("../middlewares/authMiddleware");
+const {verifySuperadmin} = require("../middlewares/verifySuperadmin")
 
 const router = express.Router();
 

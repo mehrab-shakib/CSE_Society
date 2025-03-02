@@ -1,6 +1,6 @@
 const express = require("express");
 const { getSuperadminStats } = require("../controllers/dashboardController");
-const { verifySuperadmin } = require("../middlewares/authMiddleware");
+const { verifySuperadmin } = require("../middlewares/verifySuperadmin") ; 
 
 const router = express.Router();
 

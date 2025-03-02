@@ -1,4 +1,4 @@
-const db = require("../config/db");
+const db = require("../config/db").promise();
 
 // Get all club admins
 exports.getAllAdmins = async (req, res) => {
@@ -6,6 +6,7 @@ exports.getAllAdmins = async (req, res) => {
     const [admins] = await db.query("SELECT id, name, email, club_id FROM users WHERE role = 'admin'");
     res.json(admins);
   } catch (error) {
+    console.error(error);
     res.status(500).json({ message: "Error fetching admins" });
   }
 };
@@ -28,6 +29,7 @@ exports.removeAdmin = async (req, res) => {
     await db.query("UPDATE users SET role = 'member', club_id = NULL WHERE id = ?", [userId]);
     res.json({ message: "Admin removed successfully" });
   } catch (error) {
+    console.error(error);
     res.status(500).json({ message: "Error removing admin" });
   }
 };

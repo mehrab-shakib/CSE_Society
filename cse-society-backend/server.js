@@ -1,8 +1,9 @@
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
-const db = require("./config/db");
+const db = require("./config/db").promise();
 const clubRoutes = require("./routes/clubRoutes");
+const authRoutes = require("./routes/authRoutes");
 
 const adminRoutes = require("./routes/adminRoutes");
 const dashboardRoutes = require("./routes/dashboardRoutes");
@@ -14,7 +15,7 @@ app.use(express.json()); // Parse JSON data
 
 // Routes
 
-app.use("/api/auth", require("./routes/authRoutes"));
+app.use("/api/auth", authRoutes);
 app.use("/api/clubs", clubRoutes);
 
 app.get("/", (req, res) => {
