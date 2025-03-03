@@ -1,0 +1,40 @@
+[
+    {
+      "id": 1,
+      "name": "Science Club",
+      "description": "The science of today is the technology of tomorrow.",
+      "image": "https://img.freepik.com/free-vector/futuristic-science-lab-background_23-2148495020.jpg",
+      "memberSince": "2022-05-15",
+      "events": 5,
+      "isFavorite": false
+    },
+    {
+      "id": 2,
+      "name": "Music Club",
+      "description": "Where words fail, music speaks.",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTn_FEzXtsJfzW5jn5BQ2IEeI7CZwIsu7rI3w&s",
+      "memberSince": "2023-02-10",
+      "events": 3,
+      "isFavorite": true
+    },
+    {
+        "id": 3,
+        "name": "Cultural Club",
+        "description": "Unity in diversity.",
+        "image": "https://i.pinimg.com/474x/dc/fe/35/dcfe3521d2506007e8dffa756814f3e1.jpg",
+        "memberSince": "2023-02-10",
+        "events": 3,
+        "isFavorite": true
+      }
+      ,
+    {
+        "id": 4,
+        "name": "Skill Development Club",
+        "description": "Unity in diversity.",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaSfucxiH6BZQxuCzR0jV48Z779gJJX2KgLw&s",
+        "memberSince": "2023-02-10",
+        "events": 3,
+        "isFavorite": true
+      }
+  ]
+  

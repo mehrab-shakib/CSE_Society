@@ -1,0 +1,31 @@
+[
+    {
+      "id": 5,
+      "name": "Drama Club",
+      "description": "All the world’s a stage!",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQprvmp72NfipLuaY76HQf_KyxqKq6zO_OKbg&s",
+      "events": 4
+    },
+    {
+      "id": 6,
+      "name": "Photography Club",
+      "description": "Capture the moment, live the memories.",
+      "image": "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/photo-club-flyer-design-template-cbb89e68ec0a95b72194555027d9c21f_screen.jpg?ts=1636992520",
+      "events": 2
+    },
+    {
+        "id": 7,
+        "name": "Dance Club",
+        "description": "Dance like no one is watching.",
+        "image": "https://media.istockphoto.com/id/486420378/photo/head-is-swimming-on-dance-floor.jpg?s=612x612&w=0&k=20&c=EiMJlGkIDN5aPdr8-QHzAIU6R8Siago92eisJZCNqts=",
+        "events": 2
+      },
+      {
+          "id": 8,
+          "name": "Programming Club",
+          "description": "Dance like no one is watching.",
+          "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLrhx3m9sYiwAzEgbJCC836CKM23BhF-UeaQ&s",
+          "events": 2
+        }
+  ]
+  

@@ -1,26 +1,33 @@
 import logo from "../assets/footerLogo.svg";
 import React, { useState } from "react";
-// react icons
-import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
-import { TbLogout2, TbUsersGroup } from "react-icons/tb";
+// React Icons
+import { IoIosArrowDown, IoIosArrowUp, IoIosSearch } from "react-icons/io";
+import { TbLogout2, TbUsersGroup, TbMenu3 } from "react-icons/tb";
 import { CiMenuFries } from "react-icons/ci";
 import { AiOutlineFire, AiOutlineNotification } from "react-icons/ai";
 import { FiUser } from "react-icons/fi";
 import { IoSettingsOutline, IoCalendarClearOutline } from "react-icons/io5";
 import { FaRegCircleUser } from "react-icons/fa6";
-import { IoIosSearch } from "react-icons/io";
+import { MdOutlineKeyboardDoubleArrowLeft } from "react-icons/md";
 
-const DashboardNav = () => {
+const DashboardNav = ({ sidebarOpen, setSidebarOpen, activeSection, setActiveSection }) => {
   const [accountMenuOpen, setAccountMenuOpen] = useState(false);
-
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
 
   return (
-    <nav className="flex items-center justify-between w-full relative">
-      {/* logo */}
-      <img src={logo} alt="logo" className="w-[90px]  " />
+    <nav className="flex items-center gap-3 justify-between w-full relative shadow-lg">
+      <div className="flex items-center gap-3">
+        {/* Sidebar Toggle Icon */}
+        <TbMenu3
+          onClick={() => setSidebarOpen(!sidebarOpen)}
+          className="text-[1.8rem] text-violet-600 cursor-pointer transition delay-80 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110"
+        />
 
-      {/* nav links */}
+        {/* Logo */}
+        <img src={logo} alt="logo" className="w-[90px]" />
+      </div>
+
+      {/* Navigation Links */}
       <ul className="items-center gap-[20px] text-[1rem] text-[#424242] md:flex hidden">
         <div className="relative mt-5 mb-5">
           <input
@@ -40,7 +47,7 @@ const DashboardNav = () => {
         </li>
       </ul>
 
-      {/* user account */}
+      {/* User Account Section */}
       <div className="flex items-center gap-[15px]">
         <div
           className="flex items-center gap-[10px] cursor-pointer relative"
@@ -48,7 +55,6 @@ const DashboardNav = () => {
         >
           <div className="relative">
             <FaRegCircleUser className="text-[1.5rem] text-gray-600" />
-
             <div className="w-[10px] h-[10px] rounded-full bg-green-500 absolute bottom-[0px] right-0 border-2 border-white"></div>
           </div>
 
@@ -63,17 +69,17 @@ const DashboardNav = () => {
                 : "translate-y-[10px] opacity-0 z-[-1]"
             } bg-white w-max rounded-md absolute top-[45px] right-0 p-[10px] flex flex-col transition-all duration-300 gap-[5px]`}
           >
-            <p className="flex items-center gap-[5px] rounded-md p-[8px] pr-[45px] py-[3px] text-[1rem] text-gray-600 hover:bg-gray-50">
+            <p className="flex items-center gap-[5px] rounded-md p-[8px] text-[1rem] text-gray-600 hover:bg-gray-50">
               <FiUser />
               View Profile
             </p>
-            <p className="flex items-center gap-[5px] rounded-md p-[8px] pr-[45px] py-[3px] text-[1rem] text-gray-600 hover:bg-gray-50">
+            <p className="flex items-center gap-[5px] rounded-md p-[8px] text-[1rem] text-gray-600 hover:bg-gray-50">
               <IoSettingsOutline />
               Settings
             </p>
 
             <div className="mt-3 border-t border-gray-200 pt-[5px]">
-              <p className="flex items-center gap-[5px] rounded-md p-[8px] pr-[45px] py-[3px] text-[1rem] text-red-500 hover:bg-red-50">
+              <p className="flex items-center gap-[5px] rounded-md p-[8px] text-[1rem] text-red-500 hover:bg-red-50">
                 <TbLogout2 />
                 Logout
               </p>
@@ -87,28 +93,75 @@ const DashboardNav = () => {
           />
         </div>
 
+        {/* Mobile Sidebar Toggle */}
         <CiMenuFries
           onClick={() => setMobileSidebarOpen(!mobileSidebarOpen)}
-          className="text-[1.8rem] text-[#424242]c cursor-pointer md:hidden flex"
+          className="text-[1.8rem] text-[#424242] cursor-pointer md:hidden flex"
         />
       </div>
 
-      {/* mobile sidebar */}
+      {/* Sidebar */}
       <aside
-        className={` ${
-          mobileSidebarOpen
-            ? "translate-x-0 opacity-100 z-20"
-            : "translate-x-[200px] opacity-0 z-[-1]"
-        } md:hidden bg-white p-4 text-center absolute top-[55px] right-0 sm:w-[300px] w-full rounded-md transition-all duration-300`}
+        className={`fixed top-0 left-0 h-full w-[250px] bg-white shadow-lg transition-transform transform ${
+          sidebarOpen ? "translate-x-0" : "-translate-x-full"
+        } p-5 z-20`}
       >
-        <ul className="items-start gap-[20px] text-[1rem] text-gray-600 flex flex-col">
-          {/* product mega menu */}
+        {/* Sidebar Header with Close Button */}
+        <div className="flex justify-between items-center mb-5">
+          <img src={logo} alt="logo" className="w-[90px]" />
+          <button
+            onClick={() => setSidebarOpen(false)}
+            className="text-xl text-gray-600 bg-violet-300 rounded-full hover:bg-violet-400 transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110"
+          >
+            <MdOutlineKeyboardDoubleArrowLeft />
+          </button>
+        </div>
 
-          <li className="hover:text-[#8F00FF] transition-all duration-500 cursor-poin ter capitalize">
-            Announcements
+        {/* Sidebar Content with Active State Highlighting */}
+        <ul className="space-y-4 text-gray-700">
+          <li className="hover:text-[#8F00FF] bg-gray-100 p-2 cursor-pointer flex items-center gap-2">
+            <AiOutlineFire />
+            Dashboard
           </li>
-          <li className="hover:text-[#8F00FF] transition-all duration-500 cursor-pointer capitalize">
-            Events
+
+          {/* Clubs Section */}
+          <li className="text-gray-500 uppercase font-bold mt-4 bg-gray-100 p-2">
+            Clubs
+          </li>
+          <li
+            className={`p-2 cursor-pointer flex items-center gap-2 ${
+              activeSection === "my-clubs"
+                ? "bg-[#f4ebff] text-[#45009b]"
+                : "hover:text-[#8F00FF] hover:bg-gray-100"
+            }`}
+            onClick={() => setActiveSection("my-clubs")}
+          >
+            <TbUsersGroup />
+            My Clubs
+          </li>
+          <li
+            className={`p-2 cursor-pointer flex items-center gap-2 ${
+              activeSection === "join-club"
+                ? "bg-[#f4ebff] text-[#45009b]"
+                : "hover:text-[#8F00FF] hover:bg-gray-100"
+            }`}
+            onClick={() => setActiveSection("join-club")}
+          >
+            <IoIosArrowDown />
+            Join New Club
+          </li>
+
+          {/* User Section (RESTORED) */}
+          <li className="text-gray-500 uppercase font-bold mt-4 bg-gray-100 p-2">
+            User
+          </li>
+          <li className="hover:text-[#8F00FF] hover:bg-gray-100 p-2 cursor-pointer flex items-center gap-2">
+            <FiUser />
+            Profile
+          </li>
+          <li className="hover:text-[#8F00FF] hover:bg-gray-100 p-2 cursor-pointer flex items-center gap-2">
+            <IoSettingsOutline />
+            Settings
           </li>
         </ul>
       </aside>
