@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "name": "Science Club",
+    "description": "The science of today is the technology of tomorrow.",
+    "image": "https://img.freepik.com/free-vector/futuristic-science-lab-background_23-2148495020.jpg",
+    "memberSince": "2022-05-15",
+    "events": 5,
+    "isFavorite": false
+  },
+  {
+    "id": 2,
+    "name": "Music Club",
+    "description": "Where words fail, music speaks.",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTn_FEzXtsJfzW5jn5BQ2IEeI7CZwIsu7rI3w&s",
+    "memberSince": "2023-02-10",
+    "events": 3,
+    "isFavorite": true
+  },
+  {
+    "id": 3,
+    "name": "Cultural Club",
+    "description": "Unity in diversity.",
+    "image": "https://i.pinimg.com/474x/dc/fe/35/dcfe3521d2506007e8dffa756814f3e1.jpg",
+    "memberSince": "2023-02-10",
+    "events": 3,
+    "isFavorite": true
+  },
+  {
+    "id": 4,
+    "name": "Skill Development Club",
+    "description": "Unity in diversity.",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaSfucxiH6BZQxuCzR0jV48Z779gJJX2KgLw&s",
+    "memberSince": "2023-02-10",
+    "events": 3,
+    "isFavorite": true
+  },
+  {
+    "id": 5,
+    "name": "Drama Club",
+    "description": "All the world’s a stage!",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQprvmp72NfipLuaY76HQf_KyxqKq6zO_OKbg&s",
+    "events": 4
+  },
+  {
+    "id": 6,
+    "name": "Photography Club",
+    "description": "Capture the moment, live the memories.",
+    "image": "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/photo-club-flyer-design-template-cbb89e68ec0a95b72194555027d9c21f_screen.jpg?ts=1636992520",
+    "events": 2
+  },
+  {
+    "id": 7,
+    "name": "Dance Club",
+    "description": "Dance like no one is watching.",
+    "image": "https://media.istockphoto.com/id/486420378/photo/head-is-swimming-on-dance-floor.jpg?s=612x612&w=0&k=20&c=EiMJlGkIDN5aPdr8-QHzAIU6R8Siago92eisJZCNqts=",
+    "events": 2
+  },
+  {
+    "id": 8,
+    "name": "Programming Club",
+    "description": "Dance like no one is watching.",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLrhx3m9sYiwAzEgbJCC836CKM23BhF-UeaQ&s",
+    "events": 2
+  }
+]

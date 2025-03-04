@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FaStar, FaRegStar, FaCalendarAlt, FaUser } from "react-icons/fa";
 
-const ClubCard = ({ club, activeSection }) => {
+const ClubCard = ({ club, activeSection, onJoinClub }) => {
   const [isFavorite, setIsFavorite] = useState(club.isFavorite);
 
   return (
@@ -53,7 +53,7 @@ const ClubCard = ({ club, activeSection }) => {
 
           {/* Show "Join Club" Only for "Join New Club" Section */}
           {activeSection === "join-club" && (
-            <button className="py-2 px-4 text-[1rem] transition-all duration-300 bg-violet-500 text-white rounded-md hover:bg-violet-700">
+            <button  onClick={() => onJoinClub(club.id)} className="py-2 px-4 text-[1rem] transition-all duration-300 bg-violet-500 text-white rounded-md hover:bg-violet-700">
               Join Club
             </button>
           )}

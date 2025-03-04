@@ -6,7 +6,7 @@ import ClubCard from "../components/ClubCard";
 import clubsData from "../data/clubs.json"; // Data for joined clubs
 import availableClubsData from "../data/availableClubs.json"; // Data for joinable clubs
 
-const UserDashboard = () => {
+const SuperadminDashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [activeSection, setActiveSection] = useState("my-clubs"); // Default section
   const [clubs, setClubs] = useState([]);
@@ -63,4 +63,4 @@ const UserDashboard = () => {
   );
 };
 
-export default UserDashboard;
+export default SuperadminDashboard;
