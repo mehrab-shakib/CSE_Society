@@ -1,7 +1,9 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import society from "../assets/society.png";
-import gs from "../assets/gs.png";
-import TeamMember from "../components/TeamMember";
+
+import MemberCard from "../components/MemberCard";
+import societyMembers from "../data/societyMembers.json";
 
 const About = () => {
   return (
@@ -44,137 +46,26 @@ const About = () => {
         </div>
 
         {/* Meet the  Team Section */}
-        <section className="mt-12 py-6  text-gray-800">
-          <div className="container flex flex-col items-center justify-center p-4 mx-auto sm:p-10">
-            <p className="p-2 text-sm font-medium tracking-wider text-center uppercase">
-              Executive Committee-2025
-            </p>
-            <h1 className="text-4xl font-bold leading-none text-center sm:text-5xl">
-              The talented people behind the scenes
-            </h1>
-            <div className="flex flex-row flex-wrap-reverse justify-center mt-8">
-            
-              {/* 5 */}
-              <TeamMember
-                name="Ahsanul Anam Saboj"
-                role="Vice President"
-                imageSrc={gs}
-                email="mailto:mehrab@example.com"
-                facebook="https://facebook.com/mehrab"
-                linkedin="https://linkedin.com/in/mehrab"
-                github="https://github.com/mehrab"
-                twitter="https://twitter.com/mehrab"
+        <div className=" mt-16 ">
+          <h1 className=" text-2xl font-semibold text-center text-gray-800 capitalize lg:text-3xl dark:text-black">
+            Our Executive Team
+          </h1>
+
+          <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 xl:grid-cols-4">
+            {societyMembers.map((member) => (
+              <MemberCard
+                key={member.id}
+                name={member.name}
+                designation={member.designation}
+                image={member.image}
+                email={member.email}
+                facebook={member.facebook}
+                linkedin={member.linkedin}
+                github={member.github}
               />
-              <TeamMember
-                name="Mehrab Hossain Shakib"
-                role="General Secretary"
-                imageSrc={gs}
-                email="mailto:leroy@example.com"
-                facebook="https://facebook.com/leroy"
-                linkedin="https://linkedin.com/in/leroy"
-                github="https://github.com/leroy"
-                twitter="https://twitter.com/leroy"
-              />
-              <TeamMember
-                name="MD Iqbal"
-                role="Assistant General Secretary"
-                imageSrc="https://source.unsplash.com/100x100/?portrait?2"
-                email="mailto:leroy2@example.com"
-                facebook="https://facebook.com/leroy2"
-                linkedin="https://linkedin.com/in/leroy2"
-                github="https://github.com/leroy2"
-                twitter="https://twitter.com/leroy2"
-              />
-              <TeamMember
-                name="MD Iqbal"
-                role="Assistant General Secretary"
-                imageSrc="https://source.unsplash.com/100x100/?portrait?2"
-                email="mailto:leroy2@example.com"
-                facebook="https://facebook.com/leroy2"
-                linkedin="https://linkedin.com/in/leroy2"
-                github="https://github.com/leroy2"
-                twitter="https://twitter.com/leroy2"
-              />
-              
-              {/* 2 */}
-              <TeamMember
-                name="Mahmuda Khatun"
-                role="Convenor"
-                imageSrc="https://source.unsplash.com/100x100/?portrait?3"
-                email="mailto:leroy3@example.com"
-                facebook="https://facebook.com/leroy3"
-                linkedin="https://linkedin.com/in/leroy3"
-                github="https://github.com/leroy3"
-                twitter="https://twitter.com/leroy3"
-              />
-              {/* 3 */}
-              <TeamMember
-                name="Zahid Hasan"
-                role="Secretary"
-                imageSrc="https://source.unsplash.com/100x100/?portrait?4"
-                email="mailto:leroy4@example.com"
-                facebook="https://facebook.com/leroy4"
-                linkedin="https://linkedin.com/in/leroy4"
-                github="https://github.com/leroy4"
-                twitter="https://twitter.com/leroy4"
-              />
-              {/* 4 */}
-              <TeamMember
-                name="Atiq Hasan"
-                role="Treasurer"
-                imageSrc="https://source.unsplash.com/100x100/?portrait?5"
-                email="mailto:leroy5@example.com"
-                facebook="https://facebook.com/leroy5"
-                linkedin="https://linkedin.com/in/leroy5"
-                github="https://github.com/leroy5"
-                twitter="https://twitter.com/leroy5"
-              />
-              <TeamMember
-                name="MD Iqbal"
-                role="Assistant General Secretary"
-                imageSrc="https://source.unsplash.com/100x100/?portrait?2"
-                email="mailto:leroy2@example.com"
-                facebook="https://facebook.com/leroy2"
-                linkedin="https://linkedin.com/in/leroy2"
-                github="https://github.com/leroy2"
-                twitter="https://twitter.com/leroy2"
-              />
-              <TeamMember
-                name="MD Iqbal"
-                role="Assistant General Secretary"
-                imageSrc="https://source.unsplash.com/100x100/?portrait?2"
-                email="mailto:leroy2@example.com"
-                facebook="https://facebook.com/leroy2"
-                linkedin="https://linkedin.com/in/leroy2"
-                github="https://github.com/leroy2"
-                twitter="https://twitter.com/leroy2"
-              />
-              <TeamMember
-                name="MD Iqbal"
-                role="Assistant General Secretary"
-                imageSrc="https://source.unsplash.com/100x100/?portrait?2"
-                email="mailto:leroy2@example.com"
-                facebook="https://facebook.com/leroy2"
-                linkedin="https://linkedin.com/in/leroy2"
-                github="https://github.com/leroy2"
-                twitter="https://twitter.com/leroy2"
-              />
-              
-              {/* 1 */}
-              <TeamMember
-                name="Prof. Dr. Mahmudul Hasan"
-                role="President"
-                imageSrc="https://source.unsplash.com/100x100/?portrait?5"
-                email="mailto:leroy5@example.com"
-                facebook="https://facebook.com/leroy5"
-                linkedin="https://linkedin.com/in/leroy5"
-                github="https://github.com/leroy5"
-                twitter="https://twitter.com/leroy5"
-              />
-              
-            </div>
+            ))}
           </div>
-        </section>
+        </div>
       </div>
     </div>
   );

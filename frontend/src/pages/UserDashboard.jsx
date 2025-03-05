@@ -11,12 +11,21 @@ const UserDashboard = () => {
   const [activeSection, setActiveSection] = useState("my-clubs"); // Default section
   const [clubs, setClubs] = useState([]);
   const [availableClubs, setAvailableClubs] = useState([]);
+  const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
   // Load data when component mounts
   useEffect(() => {
     setClubs(clubsData);
     setAvailableClubs(availableClubsData);
+  }, []);
+
+  useEffect(() => {
+    // Fetch user data (from localStorage or API)
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    if (storedUser) {
+      setUser(storedUser);
+    }
   }, []);
 
   return (
@@ -26,6 +35,7 @@ const UserDashboard = () => {
         setSidebarOpen={setSidebarOpen}
         activeSection={activeSection}
         setActiveSection={setActiveSection}
+        user={user}
       />
 
       <div

@@ -1,5 +1,6 @@
 import logo from "../assets/footerLogo.svg";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 // React Icons
 import { IoIosArrowDown, IoIosArrowUp, IoIosSearch } from "react-icons/io";
 import { TbLogout2, TbUsersGroup, TbMenu3 } from "react-icons/tb";
@@ -10,9 +11,21 @@ import { IoSettingsOutline, IoCalendarClearOutline } from "react-icons/io5";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { MdOutlineKeyboardDoubleArrowLeft } from "react-icons/md";
 
-const DashboardNav = ({ sidebarOpen, setSidebarOpen, activeSection, setActiveSection }) => {
+const DashboardNav = ({
+  sidebarOpen,
+  setSidebarOpen,
+  activeSection,
+  setActiveSection,
+  user,
+}) => {
   const [accountMenuOpen, setAccountMenuOpen] = useState(false);
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    navigate("/login");
+  };
 
   return (
     <nav className="flex items-center gap-3 justify-between w-full relative shadow-lg">
@@ -59,7 +72,7 @@ const DashboardNav = ({ sidebarOpen, setSidebarOpen, activeSection, setActiveSec
           </div>
 
           <h1 className="text-[1rem] font-[400] text-gray-600 sm:block hidden">
-            Member
+            {user ? user.name : "Guest"}
           </h1>
 
           <div
@@ -79,7 +92,10 @@ const DashboardNav = ({ sidebarOpen, setSidebarOpen, activeSection, setActiveSec
             </p>
 
             <div className="mt-3 border-t border-gray-200 pt-[5px]">
-              <p className="flex items-center gap-[5px] rounded-md p-[8px] text-[1rem] text-red-500 hover:bg-red-50">
+              <p
+                className="flex items-center gap-[5px] rounded-md p-[8px] text-[1rem] text-red-500 hover:bg-red-50"
+                onClick={handleLogout}
+              >
                 <TbLogout2 />
                 Logout
               </p>

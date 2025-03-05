@@ -11,8 +11,8 @@ const AllClubsCard = ({club}) => {
     
     const [isFavorite, setIsFavorite] = useState(false);
   return (
-    <div>
-        <div className="w-screen md:w-[80%] shadow-lg bg-white rounded m-10">
+    <div  >
+        <div className="w-screen md:w-[80%] shadow-lg bg-white rounded m-10 hover:bg-violet-100 transition duration-150 ease-in-out">
             <img
                 src={club.image}
                 alt={club.name}

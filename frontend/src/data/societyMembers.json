@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "name": "Prof. Dr. Mahmudul Hasan",
+    "image": "/assets/President.jpg",
+    "designation": "President",
+    "facebook": "https://www.facebook.com/rashedul.islam.524",
+    "linkedin": "https://www.linkedin.com/in/rashedul-islam-1a1a201b7/",
+    "github": "https://github.com/rashedul-islam",
+    "email": "nWY8s@example.com"
+  },
+  {
+    "id": 2,
+    "name": "Mahmuda Khatun",
+    "designation": "Convenor",
+    "image": "/assets/Convenor.png",
+    "facebook": "https://www.facebook.com/rashedul.islam.524",
+    "linkedin": "https://www.linkedin.com/in/rashedul-islam-1a1a201b7/",
+    "github": "https://github.com/rashedul-islam",
+    "email": "nWY8s@example.com"
+  },
+  {
+    "id": 3,
+    "name": "Md Zahidur Rahman",
+    "designation": "Secretary",
+    "image": "../assets/Secretary.jpg",
+    "facebook": "https://www.facebook.com/rashedul.islam.524",
+    "linkedin": "https://www.linkedin.com/in/rashedul-islam-1a1a201b7/",
+    "github": "https://github.com/rashedul-islam",
+    "email": "nWY8s@example.com"
+  },
+  {
+    "id": 4,
+    "name": "Md Atiqur Rahman",
+    "designation": "Treasurer",
+    "image": "../assets/Treasurer.png",
+    "facebook": "https://www.facebook.com/rashedul.islam.524",
+    "linkedin": "https://www.linkedin.com/in/rashedul-islam-1a1a201b7/",
+    "github": "https://github.com/rashedul-islam",
+    "email": "nWY8s@example.com"
+  },
+  {
+    "id": 5,
+    "name": "Ahsanul Anam Sabuj",
+    "designation": "Vice President",
+    "image": "../assets/Vp.jpg",
+    "facebook": "https://www.facebook.com/rashedul.islam.524",
+    "linkedin": "https://www.linkedin.com/in/rashedul-islam-1a1a201b7/",
+    "github": "https://github.com/rashedul-islam",
+    "email": "nWY8s@example.com"
+  },
+  {
+    "id": 6,
+    "name": "Mehrab Hossain Shakib",
+    "designation": "General Secretary",
+    "image": "../assets/gs.png",
+    "facebook": "https://www.facebook.com/rashedul.islam.524",
+    "linkedin": "https://www.linkedin.com/in/rashedul-islam-1a1a201b7/",
+    "github": "https://github.com/rashedul-islam",
+    "email": "nWY8s@example.com"
+  },
+  {
+    "id": 7,
+    "name": "Md Iqbal Hossain",
+    "designation": "Assistant General Secretary",
+    "image": "../assets/Ags.jpg",
+    "facebook": "https://www.facebook.com/rashedul.islam.524",
+    "linkedin": "https://www.linkedin.com/in/rashedul-islam-1a1a201b7/",
+    "github": "https://github.com/rashedul-islam",
+    "email": "nWY8s@example.com"
+  }
+]
