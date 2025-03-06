@@ -5,6 +5,7 @@ exports.getAllClubs = async (req, res) => {
   try {
     const [clubs] = await db.query("SELECT * FROM clubs");
     res.json(clubs);
+    console.log(clubs);
   } catch (error) {
     res.status(500).json({ message: "Error fetching clubs" });
   }

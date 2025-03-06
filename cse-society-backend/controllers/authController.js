@@ -5,7 +5,7 @@ require("dotenv").config();
 
 // User Registration
 exports.register = (req, res) => {
-    console.log(req.body);
+    
     const { name, email, password, role, phone } = req.body;
 
     // Validate inputs

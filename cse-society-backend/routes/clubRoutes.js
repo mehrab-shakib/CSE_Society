@@ -14,4 +14,5 @@ router.post("/add-member", verifyAdmin, addMemberToClub);
 router.delete("/remove-member/", verifyAdmin, deleteMemberFromClub);
 router.put("/update/:clubId", verifyAdmin, updateClub);
 
+
 module.exports = router;
