@@ -1,6 +1,6 @@
 import logo from "../assets/footerLogo.svg";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 // React Icons
 import { IoIosArrowDown, IoIosArrowUp, IoIosSearch } from "react-icons/io";
 import { TbLogout2, TbUsersGroup, TbMenu3 } from "react-icons/tb";
@@ -37,7 +37,9 @@ const DashboardNav = ({
         />
 
         {/* Logo */}
-        <img src={logo} alt="logo" className="w-[90px]" />
+        <Link to="/">
+          <img src={logo} alt="Logo" className="w-32 mx-auto" />
+        </Link>
       </div>
 
       {/* Navigation Links */}
@@ -124,7 +126,9 @@ const DashboardNav = ({
       >
         {/* Sidebar Header with Close Button */}
         <div className="flex justify-between items-center mb-5">
+        <Link to ="/">
           <img src={logo} alt="logo" className="w-[90px]" />
+          </Link>
           <button
             onClick={() => setSidebarOpen(false)}
             className="text-xl text-gray-600 bg-violet-300 rounded-full hover:bg-violet-400 transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110"

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 2150 2042">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#linear-gradient);
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5, .cls-6, .cls-7 {
+        stroke-width: 0px;
+      }
+
+      .cls-2 {
+        fill: url(#Blue-3);
+      }
+
+      .cls-3 {
+        fill: url(#Blue);
+      }
+
+      .cls-4 {
+        fill: url(#Orange);
+      }
+
+      .cls-5 {
+        fill: url(#Blue-2);
+      }
+
+      .cls-6 {
+        fill: url(#linear-gradient-2);
+      }
+
+      .cls-7 {
+        fill: url(#BG_DArk);
+      }
+
+      .cls-8 {
+        fill: none;
+        stroke: aqua;
+        stroke-linejoin: round;
+        stroke-width: 1.75px;
+      }
+    </style>
+    <radialGradient id="BG_DArk" data-name="BG DArk" cx="1075" cy="1018.69" fx="1075" fy="1018.69" r="1047.46" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#3a0082"/>
+      <stop offset=".41" stop-color="#230059"/>
+      <stop offset="1" stop-color="#060225"/>
+    </radialGradient>
+    <linearGradient id="linear-gradient" x1="738.98" y1="786.84" x2="1041.55" y2="786.84" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#00cdd4"/>
+      <stop offset=".13" stop-color="#04c4d4"/>
+      <stop offset=".34" stop-color="#0faed4"/>
+      <stop offset=".59" stop-color="#218ad5"/>
+      <stop offset=".88" stop-color="#3958d6"/>
+      <stop offset="1" stop-color="#4542d7"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="1083.63" y1="975.84" x2="1392.67" y2="975.84" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#4542d7"/>
+      <stop offset=".36" stop-color="#2978d5"/>
+      <stop offset=".79" stop-color="#0bb5d4"/>
+      <stop offset="1" stop-color="#00cdd4"/>
+    </linearGradient>
+    <linearGradient id="Orange" x1="881.6" y1="913.17" x2="1233.74" y2="913.17" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffc200"/>
+      <stop offset=".13" stop-color="#ffbd02"/>
+      <stop offset=".28" stop-color="#ffae09"/>
+      <stop offset=".44" stop-color="#ff9615"/>
+      <stop offset=".61" stop-color="#ff7525"/>
+      <stop offset=".79" stop-color="#ff4a3b"/>
+      <stop offset=".97" stop-color="#ff1754"/>
+      <stop offset="1" stop-color="#ff0e59"/>
+    </linearGradient>
+    <linearGradient id="Blue" x1="1129.5" y1="523.93" x2="1249.18" y2="523.93" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#00cdd4"/>
+      <stop offset=".13" stop-color="#04c4d4"/>
+      <stop offset=".34" stop-color="#0faed4"/>
+      <stop offset=".59" stop-color="#218ad5"/>
+      <stop offset=".88" stop-color="#3958d6"/>
+      <stop offset="1" stop-color="#4542d7"/>
+    </linearGradient>
+    <linearGradient id="Blue-2" data-name="Blue" x1="881.6" y1="1311.77" x2="985.97" y2="1311.77" xlink:href="#Blue"/>
+    <linearGradient id="Blue-3" data-name="Blue" x1="913.15" y1="1509.94" x2="1202.18" y2="1509.94" xlink:href="#Blue"/>
+  </defs>
+  <rect class="cls-7" x="-.27" y="-.2" width="2150.54" height="2037.77"/>
+  <g id="all_black" data-name="all black">
+    <path id="D" class="cls-1" d="M833.94,469.95l-94.96,633.79,186.02-41.45,116.55-344.66-207.6-247.67ZM910,898.09l-57.14-17.44,29.7-122.97,57.14,17.44-29.7,122.97Z"/>
+    <g id="C">
+      <polygon class="cls-6" points="1392.67 1309.65 1083.63 1063.94 1200.59 719.28 1373.04 642.03 1378.39 823.2 1331.73 816.27 1309.74 1003.9 1384.04 1014.87 1392.67 1309.65"/>
+    </g>
+    <g id="Code_pen" data-name="Code pen">
+      <path class="cls-4" d="M1129.37,546.76h104.37l-247.77,732.82h-104.37l247.77-732.82Z"/>
+      <polygon class="cls-3" points="1233.88 546.76 1249.18 501.11 1144.8 501.11 1129.5 546.76 1233.88 546.76"/>
+      <polygon class="cls-5" points="881.6 1279.58 985.97 1279.58 919.96 1343.96 881.6 1279.58"/>
+    </g>
+    <rect class="cls-2" x="913.15" y="1496.88" width="289.03" height="26.12" rx="1.13" ry="1.13"/>
+    <path class="cls-8" d="M551.01,1427.66l-114.58,130.91c-5.01,6.4,3.77,13.48,16.73,13.48h1243.66c13.66,0,22.42-7.78,16.05-14.25l-152.94-130.91c-3.14-3.19-9.32-5.19-16.05-5.19h-976.14c-7.31,0-13.91,2.35-16.73,5.96Z"/>
+  </g>
+</svg>

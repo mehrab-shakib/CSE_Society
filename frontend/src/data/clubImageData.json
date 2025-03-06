@@ -1,0 +1,24 @@
+[
+    {
+        "id": 1,
+        "club_id": 1,
+        "image": "/assets/clubImage/1.svg",
+        "name": "Development Club"
+    },{
+        "id": 2,    
+        "club_id": 2,
+        "image": "/assets/clubImage/2.png",
+        "name": "Programming Club"
+    },{
+        "id": 3,
+        "club_id": 3,
+        "image": "/assets/clubImage/3.png",
+        "name": "Self Development Club"
+    }, 
+    {
+        "id": 4,
+        "club_id": 4,
+        "image": "/assets/clubImage/4.png",
+        "name": "Music Club"
+    }
+]

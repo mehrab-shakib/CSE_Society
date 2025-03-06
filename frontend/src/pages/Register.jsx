@@ -11,6 +11,7 @@ const Register = () => {
     name: "",
     email: "",
     password: "",
+    phone: "",
   });
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
@@ -110,6 +111,15 @@ const Register = () => {
                   name="password"
                   placeholder="Password"
                   value={formData.password}
+                  onChange={handleChange}
+                  required
+                />
+                 <input
+                  className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
+                  type="text"
+                  name="phone"
+                  placeholder="Phone"
+                  value={formData.phone}
                   onChange={handleChange}
                   required
                 />

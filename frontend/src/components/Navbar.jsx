@@ -1,9 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import logo from "../assets/CSE SOCIETY.svg"; // Ensure the logo path is correct
 
 const Navbar = () => {
   const location = useLocation(); // Get the current route
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    // Fetch user data from local storage or an API
+    const loggedInUser = JSON.parse(localStorage.getItem("user"));
+    if (loggedInUser) {
+      setUser(loggedInUser);
+    }
+  }, []);
+
+  const handleLogout = () => {
+    // Clear user data from local storage and update state
+    localStorage.removeItem("user");
+    setUser(null);
+  };
 
   return (
     <header className="bg-white shadow-md">
@@ -59,18 +74,40 @@ const Navbar = () => {
 
         {/* Sign In / Sign Up Buttons */}
         <div className="hidden lg:flex items-center space-x-4">
-          <Link
-            to="/login"
-            className="px-6 py-2 text-gray-700 hover:bg-gray-100 rounded-full transition duration-300"
-          >
-            Sign In
-          </Link>
-          <Link
-            to="/register"
-            className="px-6 py-2 bg-violet-600 text-white rounded-full hover:bg-violet-700 transition duration-300"
-          >
-            Sign Up
-          </Link>
+        {user ? (
+            <>
+              <span className="text-gray-700">Hello, {user.name}</span>
+              {user.role === "member" && (
+                <Link
+                  to="/userDashboard"
+                  className="px-6 py-2 bg-violet-600 text-white rounded-full hover:bg-violet-700 transition duration-300"
+                >
+                  Dashboard
+                </Link>
+              )}
+              <button
+                onClick={handleLogout}
+                className="px-6 py-2 text-gray-700 hover:bg-gray-100 rounded-full transition duration-300"
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <>
+              <Link
+                to="/login"
+                className="px-6 py-2 text-gray-700 hover:bg-gray-100 rounded-full transition duration-300"
+              >
+                Sign In
+              </Link>
+              <Link
+                to="/register"
+                className="px-6 py-2 bg-violet-600 text-white rounded-full hover:bg-violet-700 transition duration-300"
+              >
+                Sign Up
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </header>

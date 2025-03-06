@@ -128,3 +128,19 @@ exports.deleteMemberFromClub = async (req, res) => {
     res.status(500).json({ message: "Error removing member from club", error: error.message });
   }
 };
+
+// Update club information
+exports.updateClub = async (req, res) => {
+  const { clubId } = req.params;
+  const { name, description } = req.body;
+
+  try {
+    await db.query(
+      "UPDATE clubs SET name = ?, description = ? WHERE id = ?",
+      [name, description, clubId]
+    );
+    res.json({ message: "Club information updated successfully" });
+  } catch (error) {
+    res.status(500).json({ message: "Error updating club information", error: error.message });
+  }
+};

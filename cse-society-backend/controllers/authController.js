@@ -6,10 +6,10 @@ require("dotenv").config();
 // User Registration
 exports.register = (req, res) => {
     console.log(req.body);
-    const { name, email, password, role } = req.body;
+    const { name, email, password, role, phone } = req.body;
 
     // Validate inputs
-    if (!name || !email || !password) {
+    if (!name || !email || !password || !phone) {
         return res.status(400).json({ message: "All fields are required" });
     }
 
@@ -19,8 +19,8 @@ exports.register = (req, res) => {
 
         // Insert into database
         db.query(
-            "INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, ?)",
-            [name, email, hashedPassword, role || "member"],
+            "INSERT INTO users (name, email, password, role, phone) VALUES (?, ?, ?, ?, ?)",
+            [name, email, hashedPassword, role || "member", phone],
             (err, result) => {
                 if (err) {
                     if (err.code === "ER_DUP_ENTRY") {
