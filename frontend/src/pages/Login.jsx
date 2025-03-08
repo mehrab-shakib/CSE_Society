@@ -23,7 +23,15 @@ const Login = () => {
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("user", JSON.stringify(response.data.user));
 
-      navigate("/userDashboard"); // Redirect to the dashboard after login
+      // Check user role and navigate accordingly
+      const userRole = response.data.user.role;
+      if (userRole === "superadmin") {
+        navigate("/superadminDashboard");
+      } else if (userRole === "admin") {
+        navigate("/adminDashboard");
+      } else {
+        navigate("/userDashboard");
+      }
     } catch (err) {
       // Set error message from backend
       setError(err.response?.data?.message || "Login failed");

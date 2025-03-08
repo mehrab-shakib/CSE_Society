@@ -84,6 +84,21 @@ const Navbar = () => {
                 >
                   Dashboard
                 </Link>
+              )} {user.role === "superadmin" && (
+
+                <Link
+                  to="/superadminDashboard"
+                  className="px-6 py-2 bg-violet-600 text-white rounded-full hover:bg-violet-700 transition duration-300"
+                >
+                  Dashboard
+                </Link>
+              )}{user.role === "admin" && (
+                <Link 
+                  to="/adminDashboard"
+                  className="px-6 py-2 bg-violet-600 text-white rounded-full hover:bg-violet-700 transition duration-300"
+                >
+                  Dashboard
+                </Link>
               )}
               <button
                 onClick={handleLogout}

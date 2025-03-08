@@ -5,7 +5,7 @@ exports.getAllClubs = async (req, res) => {
   try {
     const [clubs] = await db.query("SELECT * FROM clubs");
     res.json(clubs);
-    console.log(clubs);
+    
   } catch (error) {
     res.status(500).json({ message: "Error fetching clubs" });
   }
@@ -143,5 +143,35 @@ exports.updateClub = async (req, res) => {
     res.json({ message: "Club information updated successfully" });
   } catch (error) {
     res.status(500).json({ message: "Error updating club information", error: error.message });
+  }
+};
+
+// exports.getClubById = async (req, res) => {
+//   const { clubId } = req.params;
+//   console.log(`Fetching details for club ID: ${clubId}`); // Add this line to log the clubId
+//   try {
+//     const [club] = await db.query("SELECT * FROM clubs WHERE id = ?", [clubId]);
+//     console.log(`Query result: ${JSON.stringify(club)}`); // Add this line to log the query result
+//     if (club.length === 0) {
+//       return res.status(404).json({ message: "Club not found" });
+//     }
+//     res.json(club[0]);
+//   } catch (error) {
+   
+//     console.error(`Error fetching club details: ${error.message}`); // Add this line to log the error
+//     res.status(500).json({ message: "Error fetching club details", error: error.message });
+//   }
+// };
+
+exports.getClubById = async (req, res) => {
+  const { clubId } = req.params;
+  try {
+    const [club] = await db.query("SELECT * FROM clubs WHERE id = ?", [clubId]);
+    if (club.length === 0) {
+      return res.status(404).json({ message: "Club not found" });
+    }
+    res.json(club[0]);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching club details", error: error.message });
   }
 };

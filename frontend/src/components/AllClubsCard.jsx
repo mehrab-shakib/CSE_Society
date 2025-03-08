@@ -1,74 +1,82 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; 
 import { BsEye, BsThreeDotsVertical } from "react-icons/bs";
 import { FaHeart } from "react-icons/fa";
 import { HiMiniShare } from "react-icons/hi2";
 import { BiLike } from "react-icons/bi";
 
-const AllClubsCard = ({ club }) => {
+const AllClubsCard = ({ club, isSuperAdmin }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const [showFullDescription, setShowFullDescription] = useState(false);
+  const navigate = useNavigate();
 
   const toggleDescription = () => {
     setShowFullDescription(!showFullDescription);
   };
 
   const description = showFullDescription ? club.description : `${club.description.slice(0, 100)}...`;
+  const handleEditClick = () => {
+    navigate(`/edit-club/${club.id}`); // Navigate to the Edit Club form
+  };
 
   return (
-    <div>
-      <div className="w-screen md:w-[80%] shadow-lg bg-white rounded m-10 hover:bg-violet-100 transition duration-150 ease-in-out">
-        {club.image_url ? (
-          <img
-            src={club.image_url}
-            alt={club.name}
-            className="w-full h-64 object-cover"
-          />
-        ) : (
-          <div className="w-full h-64 bg-gray-200 flex items-center justify-center">
-            <span className="text-gray-500">No Image Available</span>
-          </div>
-        )}
-        <div className="flex w-full justify-between items-center p-4">
-          <div className="flex items-center gap-4">
-            <div className="flex flex-col items-center">
-              <h2 className="font-semibold text-2xl">{club.name}</h2>
-            </div>
-          </div>
-          <BsThreeDotsVertical
-            className="text-[#424242] rounded-full text-[2.5rem] p-2 hover:bg-[#ececec] cursor-pointer"
-          />
+    <div className="w-full md:w-[90%] shadow-lg bg-white rounded-lg mx-auto my-8 hover:shadow-xl transition duration-150 ease-in-out">
+      {club.image_url ? (
+        <img src={club.image_url} alt={club.name} className="w-full h-64 object-cover rounded-t-lg" />
+      ) : (
+        <div className="w-full h-64 bg-gray-200 flex items-center justify-center rounded-t-lg">
+          <span className="text-gray-500">No Image Available</span>
+        </div>
+      )}
+
+      <div className="p-4">
+        <div className="flex justify-between items-center">
+          <h2 className="font-semibold text-2xl">{club.name}</h2>
+          <BsThreeDotsVertical className="text-gray-600 text-2xl cursor-pointer hover:text-gray-800" />
         </div>
 
-        <p className="text-[#424242] p-4">
-          <div className="flex flex-row">
-            <button className="flex flex-row">
-              <BsEye className="text-2xl p-1" /> 50
+        <p className="text-gray-700 my-2">
+          <div className="flex space-x-4 text-gray-600">
+            <button className="flex items-center gap-1">
+              <BsEye className="text-xl" /> 50
             </button>
-            <button className="flex flex-row">
-              <BiLike className="text-2xl p-1" /> 10
+            <button className="flex items-center gap-1">
+              <BiLike className="text-xl" /> 10
             </button>
           </div>
           {description}
           {club.description.length > 100 && (
-            <button onClick={toggleDescription} className="text-violet-500 ml-2 hover:text-gray-800">
+            <button onClick={toggleDescription} className="text-violet-600 ml-2 hover:text-violet-800">
               {showFullDescription ? "See Less" : "See More"}
             </button>
           )}
         </p>
 
-        <div className="flex items-center justify-between w-full p-4">
-          <div className="flex flex-col items-center gap-4">
-            <div className="flex flex-row gap-5">
+        <div className="flex justify-between items-center mt-4">
+          {!isSuperAdmin ? (
+            <div className="flex gap-4">
               <FaHeart
-                className={`${
-                  isFavorite ? "text-[#7506ff]" : "text-[#424242]"
-                } text-[1.4rem] cursor-pointer`}
+                className={`text-xl cursor-pointer ${
+                  isFavorite ? "text-violet-600" : "text-gray-600"
+                }`}
                 onClick={() => setIsFavorite(!isFavorite)}
               />
-              <HiMiniShare className="text-[#424242] text-[1.4rem] cursor-pointer" />
+              <HiMiniShare className="text-xl text-gray-600 cursor-pointer hover:text-gray-800" />
             </div>
-          </div>
-          <button className="btn p-3 rounded border bg-violet-600 text-white hover:bg-violet-300 hover:text-white">
+          ) : (
+            <div className="flex gap-3">
+              <button className="px-4 py-2 bg-yellow-500 text-white rounded-md hover:bg-yellow-600 transition"
+              onClick={handleEditClick}
+              >
+                Edit Club
+              </button>
+              <button className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition">
+                Delete Club
+              </button>
+            </div>
+          )}
+
+          <button className="px-2 py-2 bg-violet-600 text-white  rounded-md hover:bg-violet-700 transition">
             View Club
           </button>
         </div>
