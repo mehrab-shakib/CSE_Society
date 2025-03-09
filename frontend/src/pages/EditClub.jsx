@@ -54,21 +54,30 @@ const EditClub = () => {
     setClub({ ...club, [name]: value });
   };
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        throw new Error("No token found");
+      }
       const response = await fetch(`http://localhost:5000/api/clubs/update/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${localStorage.getItem("token")}`
+          "Authorization": `Bearer ${token}`,
         },
         body: JSON.stringify(club),
       });
+      console.log(club); 
+      const responseData = await response.json();
+    console.log("Response from server:", responseData);
       if (!response.ok) {
         throw new Error("Failed to update club");
       }
-      navigate("/"); // Navigate back to the main page after updating
+      alert("Club updated successfully");
+      navigate("/superadminDashboard"); // Navigate back to the main page after updating
     } catch (error) {
       console.error("Error updating club:", error);
     }

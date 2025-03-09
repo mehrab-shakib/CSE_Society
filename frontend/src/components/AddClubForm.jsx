@@ -3,10 +3,11 @@ import React, { useState } from "react";
 const AddClubForm = ({ onSubmit }) => {
   const [clubName, setClubName] = useState("");
   const [clubDescription, setClubDescription] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit({ name: clubName, description: clubDescription });
+    onSubmit({ name: clubName, description: clubDescription, image_url: imageUrl });
   };
 
   return (
@@ -29,6 +30,16 @@ const AddClubForm = ({ onSubmit }) => {
             <textarea
               value={clubDescription}
               onChange={(e) => setClubDescription(e.target.value)}
+              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+              required
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Image URL</label>
+            <input
+              type="text"
+              value={imageUrl}
+              onChange={(e) => setImageUrl(e.target.value)}
               className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
               required
             />

@@ -74,6 +74,7 @@ const SuperadminDashboard = () => {
       setClubs([...clubs, newClub]);
       setActiveSection("all-clubs"); // Switch back to "All Clubs" section after adding
       alert("Club added successfully!");
+      window.location.reload(); // Reload the page to reflect the changes
       // navigate("/superadmin-dashboard");
     } catch (error) {
       console.error("Error adding club:", error);

@@ -5,18 +5,17 @@ exports.getAllClubs = async (req, res) => {
   try {
     const [clubs] = await db.query("SELECT * FROM clubs");
     res.json(clubs);
-    
   } catch (error) {
     res.status(500).json({ message: "Error fetching clubs" });
   }
 };
 
 exports.createClub = async (req, res) => {
-  const { name, description, created_by } = req.body;
+  const { name, description, created_by =1, image_url } = req.body;
   try {
     await db.query(
-      "INSERT INTO clubs (name, description, created_by) VALUES (?, ?, ?)",
-      [name, description, created_by]
+      "INSERT INTO clubs (name, description, created_by, image_url) VALUES (?, ?, ?, ?)",
+      [name, description, created_by, image_url]
     );
     res.status(201).json({ message: "Club created, pending approval" });
   } catch (error) {
@@ -107,14 +106,19 @@ exports.deleteMemberFromClub = async (req, res) => {
     );
 
     if (existingMembership.length === 0) {
-      return res.status(404).json({ message: "User is not a member of the club" });
+      return res
+        .status(404)
+        .json({ message: "User is not a member of the club" });
     }
 
     // Start a transaction to ensure atomicity
     await db.beginTransaction();
 
     // Remove the user from the club_members table
-    await db.query("DELETE FROM club_members WHERE user_id = ? AND club_id = ?", [userId, clubId]);
+    await db.query(
+      "DELETE FROM club_members WHERE user_id = ? AND club_id = ?",
+      [userId, clubId]
+    );
 
     // Update the users table to set club_id to NULL
     await db.query("UPDATE users SET club_id = NULL WHERE id = ?", [userId]);
@@ -126,42 +130,37 @@ exports.deleteMemberFromClub = async (req, res) => {
   } catch (error) {
     // Rollback the transaction in case of error
     await db.rollback();
-    res.status(500).json({ message: "Error removing member from club", error: error.message });
+    res
+      .status(500)
+      .json({
+        message: "Error removing member from club",
+        error: error.message,
+      });
   }
 };
 
 // Update club information
 exports.updateClub = async (req, res) => {
   const { clubId } = req.params;
-  const { name, description } = req.body;
+  const { name, description, imageUrl } = req.body;
 
   try {
     await db.query(
-      "UPDATE clubs SET name = ?, description = ? WHERE id = ?",
-      [name, description, clubId]
+      "UPDATE clubs SET name = ?, description = ?, image_url = ? WHERE id = ?",
+      [name, description, imageUrl, clubId]
     );
     res.json({ message: "Club information updated successfully" });
   } catch (error) {
-    res.status(500).json({ message: "Error updating club information", error: error.message });
+    res
+      .status(500)
+      .json({
+        message: "Error updating club information",
+        error: error.message,
+      });
   }
 };
 
-// exports.getClubById = async (req, res) => {
-//   const { clubId } = req.params;
-//   console.log(`Fetching details for club ID: ${clubId}`); // Add this line to log the clubId
-//   try {
-//     const [club] = await db.query("SELECT * FROM clubs WHERE id = ?", [clubId]);
-//     console.log(`Query result: ${JSON.stringify(club)}`); // Add this line to log the query result
-//     if (club.length === 0) {
-//       return res.status(404).json({ message: "Club not found" });
-//     }
-//     res.json(club[0]);
-//   } catch (error) {
-   
-//     console.error(`Error fetching club details: ${error.message}`); // Add this line to log the error
-//     res.status(500).json({ message: "Error fetching club details", error: error.message });
-//   }
-// };
+
 
 exports.getClubById = async (req, res) => {
   const { clubId } = req.params;
@@ -172,6 +171,8 @@ exports.getClubById = async (req, res) => {
     }
     res.json(club[0]);
   } catch (error) {
-    res.status(500).json({ message: "Error fetching club details", error: error.message });
+    res
+      .status(500)
+      .json({ message: "Error fetching club details", error: error.message });
   }
 };
