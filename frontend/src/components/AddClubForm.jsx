@@ -11,7 +11,7 @@ const AddClubForm = ({ onSubmit }) => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+    <div className="flex justify-center items-center   min-h-screen bg-violet-100  ">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
         <h2 className="text-2xl font-bold mb-6 text-center">Add New Club</h2>
         <form onSubmit={handleSubmit} className="space-y-6">
@@ -47,7 +47,7 @@ const AddClubForm = ({ onSubmit }) => {
           <div className="flex justify-center">
             <button
               type="submit"
-              className="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="px-4 py-2 bg-violet-600 text-white rounded-md hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-violet-500"
             >
               Add Club
             </button>

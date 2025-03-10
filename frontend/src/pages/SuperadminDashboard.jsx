@@ -107,7 +107,7 @@ const SuperadminDashboard = () => {
               <AllClubsCard key={club.id} club={club} activeSection={activeSection} isSuperAdmin={true} />
             ))
           ) : (
-            <div className="w-full max-w-6xl mx-auto">
+            <div className="w-screen max-w-6xl mx-auto  ">
         <AddClubForm onSubmit={handleAddClub} />
       </div>
           )}
