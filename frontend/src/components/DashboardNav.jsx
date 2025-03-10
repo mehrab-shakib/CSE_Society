@@ -11,6 +11,7 @@ import { IoSettingsOutline, IoCalendarClearOutline } from "react-icons/io5";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { MdOutlineKeyboardDoubleArrowLeft } from "react-icons/md";
 
+
 const DashboardNav = ({
   sidebarOpen,
   setSidebarOpen,
@@ -175,10 +176,26 @@ const DashboardNav = ({
           <li className="text-gray-500 uppercase font-bold mt-4 bg-gray-100 p-2">
             User
           </li>
-          <li className="hover:text-[#8F00FF] hover:bg-gray-100 p-2 cursor-pointer flex items-center gap-2">
+
+
+          {/* <li className="hover:text-[#8F00FF] hover:bg-gray-100 p-2 cursor-pointer flex items-center gap-2">
+            <FiUser />
+            Profile
+          </li> */}
+          <li
+            className={`p-2 cursor-pointer flex items-center gap-2 ${
+              activeSection === "user-profile"
+                ? "bg-[#f4ebff] text-[#45009b]"
+                : "hover:text-[#8F00FF] hover:bg-gray-100"
+            }`}
+            onClick={() => setActiveSection("user-profile")}
+          >
             <FiUser />
             Profile
           </li>
+
+
+
           <li className="hover:text-[#8F00FF] hover:bg-gray-100 p-2 cursor-pointer flex items-center gap-2">
             <IoSettingsOutline />
             Settings

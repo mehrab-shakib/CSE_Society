@@ -3,16 +3,19 @@ import { useNavigate } from "react-router-dom";
 import DashboardNav from "../components/DashboardNav";
 import DashboardFooter from "../components/DashboardFooter";
 import ClubCard from "../components/ClubCard";
+import UserData from "../components/UserData";
+import EditUserData from "../components/EditUserData";
 
 const UserDashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [activeSection, setActiveSection] = useState("my-clubs"); // Default section
   const [clubs, setClubs] = useState([]);
   const [availableClubs, setAvailableClubs] = useState([]);
+  const [isEditing, setIsEditing] = useState(false);
 
   const navigate = useNavigate();
 
-  const user = JSON.parse(localStorage.getItem("user"));
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
 
   // Load data when component mounts
   useEffect(() => {
@@ -95,10 +98,14 @@ const UserDashboard = () => {
         }`}
       >
         <h1 className="text-3xl font-bold mb-5">
-          {activeSection === "my-clubs" ? "My Clubs" : "Join a Club"}
+          {activeSection === "my-clubs"
+            ? "My Clubs"
+            : activeSection === "join-club"
+            ? "Join a Club"
+            : "User Information"}
         </h1>
 
-        {/* Conditional rendering based on activeSection */}
+        {/* Conditional rendering based on activeSection
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {activeSection === "my-clubs"
             ? clubs.map((club) => (
@@ -116,7 +123,39 @@ const UserDashboard = () => {
                   onJoinClub={() => navigate("/join-club/")} // Navigate when clicking "Join Club"
                 />
               ))}
-        </div>
+        </div> */}
+
+        {/* Conditional rendering based on activeSection */}
+        {activeSection === "my-clubs" && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            {clubs.map((club) => (
+              <ClubCard key={club.id} club={club} activeSection={activeSection} />
+            ))}
+          </div>
+        )}
+
+        {activeSection === "join-club" && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            {availableClubs.map((club) => (
+              <ClubCard
+                key={club.id}
+                club={club}
+                activeSection={activeSection}
+                onJoinClub={() => navigate("/join-club/")} // Navigate when clicking "Join Club"
+              />
+            ))}
+          </div>
+        )}
+
+        {activeSection === "user-profile" && (
+          isEditing ? (
+            <EditUserData user={user} setUser={setUser} onCancel={() => setIsEditing(false)} />
+          ) : (
+            <UserData user={user} onEdit={() => setIsEditing(true)} />
+          )
+        )}
+
+
       </div>
 
       <DashboardFooter />
