@@ -176,3 +176,51 @@ exports.getClubById = async (req, res) => {
       .json({ message: "Error fetching club details", error: error.message });
   }
 };
+
+exports.getClubByUser = async (req, res) => {
+  const { userId } = req.params;
+  try {
+    // Fetch club_ids from club_members table where user_id matches
+    const [clubMembers] = await db.query("SELECT club_id FROM club_members WHERE user_id = ?", [userId]);
+
+    if (clubMembers.length === 0) {
+      return res.status(404).json({ message: "No clubs found for this user" });
+    }
+
+    // Extract club_ids from the result
+    const clubIds = clubMembers.map(member => member.club_id);
+
+    // Fetch club details from clubs table using the club_ids
+    const [clubs] = await db.query("SELECT * FROM clubs WHERE id IN (?)", [clubIds]);
+
+    res.json(clubs);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching club details", error: error.message });
+  }
+};
+
+exports.getClubsNotJoinedByUser = async (req, res) => {
+  const { userId } = req.params;
+  try {
+    // Fetch club_ids from club_members table where user_id matches
+    const [clubMembers] = await db.query("SELECT club_id FROM club_members WHERE user_id = ?", [userId]);
+
+    // Extract club_ids from the result
+    const clubIds = clubMembers.map(member => member.club_id);
+
+    let query = "SELECT * FROM clubs";
+    let queryParams = [];
+
+    if (clubIds.length > 0) {
+      query += " WHERE id NOT IN (?)";
+      queryParams.push(clubIds);
+    }
+
+    // Fetch club details from clubs table excluding the club_ids
+    const [clubs] = await db.query(query, queryParams);
+
+    res.json(clubs);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching club details", error: error.message });
+  }
+};

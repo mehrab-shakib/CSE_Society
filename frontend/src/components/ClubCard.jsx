@@ -3,6 +3,13 @@ import { FaStar, FaRegStar, FaCalendarAlt, FaUser } from "react-icons/fa";
 
 const ClubCard = ({ club, activeSection, onJoinClub }) => {
   const [isFavorite, setIsFavorite] = useState(club.isFavorite);
+  const [showFullDescription, setShowFullDescription] = useState(false);
+
+  const toggleDescription = () => {
+    setShowFullDescription(!showFullDescription);
+  };
+
+  const description = showFullDescription ? club.description : (club.description ? `${club.description.slice(0, 100)}...` : ''); // Fix for null description
 
   return (
     <div
@@ -10,7 +17,7 @@ const ClubCard = ({ club, activeSection, onJoinClub }) => {
     >
       {/* Club Image */}
       <img
-        src={club.image}
+        src={club.image_url}
         alt={club.name}
         className="w-full h-[200px] rounded-t-md object-cover"
       />
@@ -18,7 +25,14 @@ const ClubCard = ({ club, activeSection, onJoinClub }) => {
       {/* Club Details */}
       <div className="p-[18px] pt-2.5 bg-white rounded-b-md">
         <h3 className="text-[1.5rem] font-bold text-[#45009b]">{club.name}</h3>
-        <p className="text-[1rem] font-[400] text-gray-600">{club.description}</p>
+        <p className=" mt-2 text-[1rem] font-[400] text-gray-600">{description}
+          {club.description?.length > 100 && (
+            <button onClick={toggleDescription} className="text-violet-600 ml-2 hover:text-violet-800">
+              {showFullDescription ? "See Less" : "See More"}
+            </button>
+          )}
+        
+        </p>
 
         {/* Show "Member Since" & "Events" Only for "My Clubs" */}
         {activeSection === "my-clubs" && (
