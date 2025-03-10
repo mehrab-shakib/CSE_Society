@@ -1,14 +1,16 @@
 const express = require("express");
-const { getAllUsers, promoteToAdmin, demoteToMember, deleteUser, getUserById, updateUserProfile } = require("../controllers/userController");
-const { verifySuperadmin } = require("../middlewares/authMiddleware");
+const {getUserById, updateUserProfile } = require("../controllers/userController.js");
+const { verifySuperadmin } = require("../middlewares/authMiddleware.js");
+
+
 
 const router = express.Router();
 
-router.get("/", verifySuperadmin, getAllUsers);
-router.put("/promote/:userId", verifySuperadmin, promoteToAdmin);
-router.put("/demote/:userId", verifySuperadmin, demoteToMember);
-router.delete("/:userId", verifySuperadmin, deleteUser);
-// 
+// router.get("/", verifySuperadmin, getAllUsers);
+router.get("/:userId", getUserById);
+// router.put("/promote/:userId", verifySuperadmin, promoteToAdmin);
+// router.put("/demote/:userId", verifySuperadmin, demoteToMember);
+// router.delete("/:userId", verifySuperadmin, deleteUser);
 router.put("/update/:userId", updateUserProfile);
 
 module.exports = router;

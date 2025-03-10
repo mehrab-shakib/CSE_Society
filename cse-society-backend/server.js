@@ -4,7 +4,7 @@ require("dotenv").config();
 const db = require("./config/db").promise();
 const clubRoutes = require("./routes/clubRoutes");
 const authRoutes = require("./routes/authRoutes");
-// const userRoutes = require("./routes/userRoutes");
+const userRoutes = require("./routes/userRoutes");
 
 const adminRoutes = require("./routes/adminRoutes");
 const dashboardRoutes = require("./routes/dashboardRoutes");
@@ -18,7 +18,7 @@ app.use(express.json()); // Parse JSON data
 
 app.use("/api/auth", authRoutes);
 app.use("/api/clubs", clubRoutes);
-// app.use("/api/users", userRoutes);
+ app.use("/api/users", userRoutes);
 app.use("/api/admins", adminRoutes);
 app.use("/api/dashboard", dashboardRoutes);
 
