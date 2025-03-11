@@ -224,3 +224,15 @@ exports.getClubsNotJoinedByUser = async (req, res) => {
     res.status(500).json({ message: "Error fetching club details", error: error.message });
   }
 };
+
+exports.joinRequest = async (req,res)=>{
+ 
+  const {userId, clubId, interest} = req.body;
+  try{
+    await db.query("INSERT INTO join_requests (user_id, club_id, interest) VALUES (?, ?, ?)",[userId, clubId, interest]);
+    res.json({message: "Join request sent successfully"});
+  }catch(error){
+    res.status(500).json({message: "Error sending join request", error: error.message});
+  }
+
+}
