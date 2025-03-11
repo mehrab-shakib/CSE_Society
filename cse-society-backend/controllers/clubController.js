@@ -236,3 +236,13 @@ exports.joinRequest = async (req,res)=>{
   }
 
 }
+
+exports.getJoinRequests = async (req, res) => {  
+  try {
+    console.log("getJoinRequests");
+    const [joinRequests] = await db.query("SELECT * FROM join_requests");
+    res.json(joinRequests);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching join requests", error: error.message });
+  }
+};
