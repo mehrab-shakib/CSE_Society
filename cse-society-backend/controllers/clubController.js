@@ -51,7 +51,7 @@ exports.deleteClub = async (req, res) => {
 //add member to club
 
 exports.addMemberToClub = async (req, res) => {
-  const { userId, clubId } = req.body;
+  const { userId, clubId, status="accepted" } = req.body;
 
   try {
     // Check if the user is already a member of the club

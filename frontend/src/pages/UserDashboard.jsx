@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import DashboardNav from "../components/DashboardNav";
@@ -97,33 +98,15 @@ const UserDashboard = () => {
           sidebarOpen ? "ml-[250px]" : "ml-0"
         }`}
       >
-        <h1 className="text-3xl font-bold mb-5">
+        <h1 className="text-2xl  mb-5">
           {activeSection === "my-clubs"
             ? "My Clubs"
             : activeSection === "join-club"
-            ? "Join a Club"
+            ? "Available Clubs"
             : "User Information"}
         </h1>
 
-        {/* Conditional rendering based on activeSection
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {activeSection === "my-clubs"
-            ? clubs.map((club) => (
-                <ClubCard
-                  key={club.id}
-                  club={club}
-                  activeSection={activeSection}
-                />
-              ))
-            : availableClubs.map((club) => (
-                <ClubCard
-                  key={club.id}
-                  club={club}
-                  activeSection={activeSection}
-                  onJoinClub={() => navigate("/join-club/")} // Navigate when clicking "Join Club"
-                />
-              ))}
-        </div> */}
+      
 
         {/* Conditional rendering based on activeSection */}
         {activeSection === "my-clubs" && (
@@ -141,7 +124,7 @@ const UserDashboard = () => {
                 key={club.id}
                 club={club}
                 activeSection={activeSection}
-                onJoinClub={() => navigate("/join-club/")} // Navigate when clicking "Join Club"
+                onJoinClub={'/'} // Navigate when clicking "Join Club"
               />
             ))}
           </div>
