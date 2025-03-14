@@ -51,9 +51,13 @@ exports.deleteClub = async (req, res) => {
 //add member to club
 
 exports.addMemberToClub = async (req, res) => {
-  const { userId, clubId, status="accepted" } = req.body;
+  const { userId, clubId, status = "approved" } = req.body;
+  
 
   try {
+    // Start a transaction
+    await db.beginTransaction();
+
     // Check if the user is already a member of the club
     const [existingMembership] = await db.query(
       "SELECT * FROM club_members WHERE user_id = ? AND club_id = ?",
@@ -61,24 +65,39 @@ exports.addMemberToClub = async (req, res) => {
     );
 
     if (existingMembership.length > 0) {
-      return res
-        .status(400)
-        .json({ message: "User is already a member of the club" });
+      await db.rollback();
+      return res.status(400).json({ message: "User is already a member of the club" });
     }
 
-    // Start a transaction to ensure atomicity
-    await db.beginTransaction();
+    // Fetch the user's phone number from the users table
+    const [userResult] = await db.query(
+      "SELECT phone FROM users WHERE id = ?",
+      [userId]
+    );
 
-    // Update the users table to set the club_id
+    if (userResult.length === 0) {
+      await db.rollback();
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const userPhone = userResult[0].phone; // Extract phone number
+
+    // Update users table to assign the club
     await db.query("UPDATE users SET club_id = ? WHERE id = ?", [
       clubId,
       userId,
     ]);
 
-    // Insert a new record into the club_members table
+    // Update the join_requests table to mark the request as approved
     await db.query(
-      "INSERT INTO club_members (user_id, club_id) VALUES (?, ?)",
+      "UPDATE join_requests SET status = 'approved' WHERE user_id = ? AND club_id = ?",
       [userId, clubId]
+    );
+
+    // Insert the user into the club_members table with the fetched phone number
+    await db.query(
+      "INSERT INTO club_members (user_id, club_id, status, phone) VALUES (?, ?, ?, ?)",
+      [userId, clubId, status, userPhone]
     );
 
     // Commit the transaction
@@ -86,13 +105,12 @@ exports.addMemberToClub = async (req, res) => {
 
     res.json({ message: "Member added to club successfully" });
   } catch (error) {
-    // Rollback the transaction in case of error
     await db.rollback();
-    res
-      .status(500)
-      .json({ message: "Error adding member to club", error: error.message });
+    console.error("Database Error:", error);
+    res.status(500).json({ message: "Error adding member to club", error: error.message });
   }
 };
+
 
 //delete member from club
 exports.deleteMemberFromClub = async (req, res) => {
@@ -227,9 +245,9 @@ exports.getClubsNotJoinedByUser = async (req, res) => {
 
 exports.joinRequest = async (req,res)=>{
  
-  const {userId, clubId, interest} = req.body;
+  const {userId, clubId, interest, name} = req.body;
   try{
-    await db.query("INSERT INTO join_requests (user_id, club_id, interest) VALUES (?, ?, ?)",[userId, clubId, interest]);
+    await db.query("INSERT INTO join_requests (user_id, club_id, interest, name) VALUES (?, ?, ?, ?)",[userId, clubId, interest, name]);
     res.json({message: "Join request sent successfully"});
   }catch(error){
     res.status(500).json({message: "Error sending join request", error: error.message});
@@ -237,12 +255,3 @@ exports.joinRequest = async (req,res)=>{
 
 }
 
-exports.getJoinRequests = async (req, res) => {  
-  try {
-    console.log("getJoinRequests");
-    const [joinRequests] = await db.query("SELECT * FROM join_requests");
-    res.json(joinRequests);
-  } catch (error) {
-    res.status(500).json({ message: "Error fetching join requests", error: error.message });
-  }
-};

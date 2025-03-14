@@ -11,7 +11,7 @@ import AdminControl from "../components/AdminControl"; // Import the new compone
 
 const SuperadminDashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
-  const [activeSection, setActiveSection] = useState("all-clubs"); // Default section
+  const [activeSection, setActiveSection] = useState("admin-control"); // Default section
   const [clubs, setClubs] = useState([]);
 
   const [user, setUser] = useState(null);
@@ -96,10 +96,6 @@ const SuperadminDashboard = () => {
           sidebarOpen ? "ml-[250px]" : "ml-0"
         }`}
       >
-        {/* <h1 className="text-3xl font mb-5">
-          {activeSection === "all-clubs" ? "All Clubs" : "Add a Club" }
-        </h1> */}
-
         {/* Further digging here */}
         <h1 className="text-2xl mb-5">
           {activeSection === "all-clubs"
@@ -108,24 +104,6 @@ const SuperadminDashboard = () => {
             ? "Add New Club"
             : "Admin Control"}
         </h1>
-
-        {/* Conditional rendering based on activeSection */}
-        {/* <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {activeSection === "all-clubs" ? (
-            clubs.map((club) => (
-              <AllClubsCard
-                key={club.id}
-                club={club}
-                activeSection={activeSection}
-                isSuperAdmin={true}
-              />
-            ))
-          ) : (
-            <div className="w-screen max-w-6xl mx-auto  ">
-              <AddClubForm onSubmit={handleAddClub} />
-            </div>
-          )}
-        </div> */}
 
         {/* Conditional rendering based on activeSection */}
         {activeSection === "all-clubs" && (
@@ -138,24 +116,23 @@ const SuperadminDashboard = () => {
                 isSuperAdmin={true}
               />
             ))}
-          </div>)}
+          </div>
+        )}
 
-          {activeSection === "add-club" && (
-            <div className="w-screen max-w-6xl mx-auto  "><AddClubForm onSubmit={handleAddClub} /></div>
-          )}
+        {activeSection === "add-club" && (
+          <div className="w-screen max-w-6xl mx-auto  ">
+            <AddClubForm onSubmit={handleAddClub} />
+          </div>
+        )}
 
-          {activeSection === "admin-control" && (
-            <div className="w-screen max-w-6xl mx-auto  "><AdminControl /></div>
-          )}
-
-
-
-
-
-
+        {activeSection === "admin-control" && (
+          <div className="w-screen max-w-6xl mx-auto  ">
+            <AdminControl clubs={clubs} />
+          </div>
+        )}
       </div>
 
-      <DashboardFooter />
+      {/* <DashboardFooter /> */}
     </>
   );
 };

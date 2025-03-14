@@ -15,7 +15,7 @@ const JoinClubForm = ({ club, onSubmit, onCancel }) => {
       const response = await fetch("http://localhost:5000/api/clubs/join-request", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ userId:user.id , clubId: club.id, interest }),
+        body: JSON.stringify({ userId:user.id , clubId: club.id, interest, name: user.name }),
       });
 
       if (!response.ok) throw new Error("Failed to join club");

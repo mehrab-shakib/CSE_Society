@@ -141,7 +141,7 @@ const UserDashboard = () => {
 
       </div>
 
-      <DashboardFooter />
+      {/* <DashboardFooter /> */}
     </>
   );
 };

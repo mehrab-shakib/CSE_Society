@@ -33,3 +33,13 @@ exports.removeAdmin = async (req, res) => {
     res.status(500).json({ message: "Error removing admin" });
   }
 };
+
+exports.getJoinRequests = async ( req, res) => {  
+  try {
+    console.log("getJoinRequests clled");
+    const [requests] = await db.query("SELECT * FROM join_requests ");
+    res.json(requests);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching join requests", error: error.message });
+  }
+};
