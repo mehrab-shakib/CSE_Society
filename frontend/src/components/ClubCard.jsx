@@ -2,10 +2,16 @@ import React, { useState } from "react";
 import { FaStar, FaRegStar, FaCalendarAlt, FaUser } from "react-icons/fa";
 import JoinClubForm from "./JoinClubForm";
 
-const ClubCard = ({ club, activeSection }) => {
+// import ViewClub from "./ViewClub";
+
+const ClubCard = ({ club, activeSection, user }) => {
   const [isFavorite, setIsFavorite] = useState(club.isFavorite);
   const [showFullDescription, setShowFullDescription] = useState(false);
   const [showJoinForm, setShowJoinForm] = useState(false); // Show/hide form
+  const [showViewClub, setShowViewClub] = useState(false); // NEW: Track if ViewClub should be shown
+  
+
+  
 
   const toggleDescription = () => {
     setShowFullDescription(!showFullDescription);
@@ -58,7 +64,10 @@ const ClubCard = ({ club, activeSection }) => {
         {/* Buttons */}
         <div className="flex justify-between items-center mt-4">
           {/* View Club Button */}
-          <button className="py-2 px-4 text-[1rem] transition-all duration-300 bg-[#45009b] text-white rounded-md hover:bg-[#c0e6ed] hover:text-black">
+          <button className="py-2 px-4 text-[1rem] transition-all duration-300 bg-[#45009b] text-white rounded-md hover:bg-[#c0e6ed] hover:text-black"
+            onClick={() => setShowViewClub(true)}
+  
+          >
             View Club
           </button>
 
@@ -84,6 +93,9 @@ const ClubCard = ({ club, activeSection }) => {
         </div>
         {/* Show JoinClubForm when button is clicked */}
         {showJoinForm && <JoinClubForm club={club} onSubmit={() => setShowJoinForm(false)} onCancel={() => setShowJoinForm(false)} />}
+
+        {/* Render ViewClub if View Club button is clicked */}
+        {showViewClub && <ViewClub clubId={club.id} clubs={club}  user={user} onClose={() => setShowViewClub(false)} />}
 
       </div>
     </div>

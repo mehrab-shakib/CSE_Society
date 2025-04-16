@@ -54,13 +54,18 @@ const DashboardNav = ({
         </div>
 
         <li className="flex items-center hover:text-[#8F00FF] group gap-[5px] cursor-pointer">
-          <AiOutlineNotification className="text-[1.1rem] group-hover:text-[#8F00FF] text-gray-600" />
-          Announcements
-        </li>
-        <li className="flex items-center hover:text-[#8F00FF] group gap-[5px] cursor-pointer">
-          <IoCalendarClearOutline className="text-[1.1rem] group-hover:text-[#8F00FF] text-gray-600" />
-          Events
-        </li>
+  <Link to="/announcement" className="flex items-center gap-[5px]">
+    <AiOutlineNotification className="text-[1.1rem] group-hover:text-[#8F00FF] text-gray-600" />
+    Announcements
+  </Link>
+</li>
+        
+<li className="flex items-center hover:text-[#8F00FF] group gap-[5px] cursor-pointer">
+  <Link to="/events" className="flex items-center gap-[5px]">
+    <IoCalendarClearOutline className="text-[1.1rem] group-hover:text-[#8F00FF] text-gray-600" />
+    Events
+  </Link>
+</li>
       </ul>
 
       {/* User Account Section */}

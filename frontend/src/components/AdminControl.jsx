@@ -56,6 +56,7 @@ const AdminControl = ({ clubs }) => {
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
+        
       }
 
       const data = await response.json();
@@ -65,6 +66,7 @@ const AdminControl = ({ clubs }) => {
       setRequests((prevRequests) => prevRequests.filter((req) => req.user_id !== userId));
     } catch (error) {
       console.error("Error adding member:", error);
+      console.log(error)
       setError("Failed to approve request. Please try again.");
     }
   };

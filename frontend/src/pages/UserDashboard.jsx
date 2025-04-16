@@ -112,7 +112,7 @@ const UserDashboard = () => {
         {activeSection === "my-clubs" && (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {clubs.map((club) => (
-              <ClubCard key={club.id} club={club} activeSection={activeSection} />
+              <ClubCard key={club.id} club={club} user= {user} activeSection={activeSection} />
             ))}
           </div>
         )}
@@ -123,6 +123,7 @@ const UserDashboard = () => {
               <ClubCard
                 key={club.id}
                 club={club}
+                user= {user}
                 activeSection={activeSection}
                 onJoinClub={'/'} // Navigate when clicking "Join Club"
               />

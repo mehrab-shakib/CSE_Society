@@ -11,7 +11,7 @@ import AdminControl from "../components/AdminControl"; // Import the new compone
 
 const SuperadminDashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
-  const [activeSection, setActiveSection] = useState("admin-control"); // Default section
+  const [activeSection, setActiveSection] = useState("all-clubs"); // Default section
   const [clubs, setClubs] = useState([]);
 
   const [user, setUser] = useState(null);

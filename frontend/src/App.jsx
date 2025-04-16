@@ -15,6 +15,9 @@ import Footer from "./components/Footer";
 import ContactUs from "./pages/ContactUs";
 import Clubs from "./pages/Clubs";
 import JoinClub from "./pages/JoinClub";
+import Announcements from "./pages/Announcements";
+import Events from "./pages/Events";
+
 
 
 import React from "react";
@@ -62,6 +65,7 @@ const App = () => {
         <Route path="/adminDashboard" element={<AdminDashboard />} />
         <Route path="/superadminDashboard" element={<SuperadminDashboard />} />
         
+        
         <Route
           path="/edit-club/:id"
           element={
@@ -69,6 +73,23 @@ const App = () => {
               {" "}
               <EditClub />
             </SuperAdminLayout>
+          }
+        />
+
+        <Route
+          path="/announcement"
+          element={
+            <MainLayout>
+              <Announcements />
+            </MainLayout>
+          }
+        />
+        <Route
+          path="/events"
+          element={
+            <MainLayout>
+              <Events />
+            </MainLayout>
           }
         />
       </Routes>

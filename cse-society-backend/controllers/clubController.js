@@ -52,6 +52,7 @@ exports.deleteClub = async (req, res) => {
 
 exports.addMemberToClub = async (req, res) => {
   const { userId, clubId, status = "approved" } = req.body;
+  console.log("Incoming body:", req.body); // ✅ Add this
   
 
   try {
